@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,9 +16,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
-        <b-navbar toggleable="lg" type="light" variant="light">
+<body class="h-100">
+    <div id="app" class="h-100">
+        <b-navbar toggleable="lg" type="dark" variant="dark">
             <b-container>
                 <b-navbar-brand href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -44,9 +44,8 @@
                             @endif
                         @else
                             <b-nav-item-dropdown text="{{ Auth::user()->name }}" right>
-                                <b-dropdown-item href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); 
-                                    document.getElementById('logout-form').submit();">
+                                <b-dropdown-item href="#"
+                                    @click="logout">
                                     {{ __('Logout') }}
                                 </b-dropdown-item>
                                 <b-nav-form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -59,9 +58,10 @@
             </b-container>
         </b-navbar>
 
-        <main class="py-4">
+        <main style="height: calc(100vh - 56px);">
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
 </body>
 </html>
