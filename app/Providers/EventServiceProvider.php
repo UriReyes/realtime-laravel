@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Message;
+use App\Observers\MessageObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -29,6 +31,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+        Message::observe(MessageObserver::class);
     }
 }

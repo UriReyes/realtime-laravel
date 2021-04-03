@@ -9,11 +9,13 @@
                 ></b-img>
             </b-col>
             <b-col md="6" align-self="center" class="d-none d-sm-block">
-                <p class="m-0">{{ name }}</p>
-                <p class="m-0 text-muted small">{{ lastMessage }}</p>
+                <p class="m-0">{{ conversation.contact_name }}</p>
+                <p class="m-0 text-muted small">
+                    {{ conversation.last_message }}
+                </p>
             </b-col>
             <b-col md="3" class="m-0 text-muted small d-none d-sm-block">
-                <p>{{ lastTime }}</p>
+                <p>{{ conversation.last_time }}</p>
             </b-col>
         </b-row>
     </b-list-group-item>
@@ -21,12 +23,9 @@
 
 <script>
 export default {
-    props: ["variant"],
+    props: { variant: String, conversation: Object },
     data() {
         return {
-            name: "Uriel Reyes",
-            lastMessage: "Tú: Hasta luego",
-            lastTime: "1:37 p.m",
             imageProps: {
                 blank: true,
                 blankColor: "#777",
